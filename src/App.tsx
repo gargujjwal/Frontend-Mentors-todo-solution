@@ -29,6 +29,9 @@ const App = () => {
             })
         );
     };
+    const todoRearrangeHandler: (
+        todo: (todo: Todo[]) => Todo[]
+    ) => void = todo => setTodos(todo);
 
     const filterChangeHandler = (todo: Todo[]) => setTodos(todo);
 
@@ -54,6 +57,7 @@ const App = () => {
                     todos={todos}
                     onTodoDelete={todoDeleteHandler}
                     onTodoCompletionChange={todoCompletionChangeHandler}
+                    onTodoRearrange={todoRearrangeHandler}
                 />
                 <TodoListFilters
                     onFilterChange={filterChangeHandler}
