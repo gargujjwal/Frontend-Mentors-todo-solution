@@ -35,9 +35,6 @@ const TodoListItem = ({
         <div
             className="flex items-center gap-3.5 rounded-sm bg-veryLightGray px-5 py-3 first:rounded-t-lg last:rounded-b-lg"
             style={{ transform: CSS.Transform.toString(transform), transition }}
-            ref={setNodeRef}
-            {...attributes}
-            {...listeners}
         >
             <Checkbox
                 checked={todo.completed}
@@ -49,6 +46,9 @@ const TodoListItem = ({
                         ? "text-lightGrayishBlue line-through"
                         : "text-veryDarkGrayishBlue"
                 }`}
+                ref={setNodeRef}
+                {...attributes}
+                {...listeners}
             >
                 {todo.text}
             </p>
