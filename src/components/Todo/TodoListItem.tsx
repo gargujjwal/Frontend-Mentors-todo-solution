@@ -34,7 +34,11 @@ const TodoListItem = ({
     return (
         <div
             className="flex items-center gap-3.5 rounded-sm bg-veryLightGray px-5 py-3 first:rounded-t-lg last:rounded-b-lg"
-            style={{ transform: CSS.Transform.toString(transform), transition }}
+            style={{
+                transform: CSS.Transform.toString(transform),
+                transition,
+                touchAction: "none",
+            }}
         >
             <Checkbox
                 checked={todo.completed}
