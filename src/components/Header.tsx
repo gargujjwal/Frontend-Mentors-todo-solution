@@ -1,5 +1,4 @@
 import MoonIcon from "../assets/icon-moon.svg";
-import SunIcon from "../assets/icon-sun.svg";
 
 const Header = () => {
     return (
