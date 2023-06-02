@@ -1,7 +1,7 @@
 import { ChangeEventHandler } from "react";
 
 type CheckboxProps = {
-    checked: boolean;
+    checked?: boolean;
     onChange: ChangeEventHandler<HTMLInputElement>;
 };
 

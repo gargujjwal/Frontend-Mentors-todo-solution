@@ -1,9 +1,4 @@
-import {
-    ChangeEventHandler,
-    FocusEventHandler,
-    FormEventHandler,
-    useState,
-} from "react";
+import { ChangeEventHandler, FormEventHandler, useState } from "react";
 import Checkbox from "../UI/Checkbox";
 import Textbox from "../UI/Textbox";
 import { Todo } from "../../types";
@@ -27,12 +22,18 @@ const TodoForm = ({ onFormSubmit }: TodoFormProps) => {
     function formInputChangeHandler(
         change: "checkbox" | "text"
     ): ChangeEventHandler<HTMLInputElement> {
+        // on checking the checkbox the todo will be submitted
         if (change === "checkbox")
-            return () =>
+            return ev => {
+                // set todo as completed, in order to show checked box
                 setTodo(prevValue => ({
                     ...prevValue,
                     completed: !prevValue.completed,
                 }));
+                // only request form submission if the checkbox is checked
+                if (!ev.target.checked) return;
+                setTimeout(() => ev.target.form?.requestSubmit(), 500);
+            };
 
         // text input field
         return ({ target: { value } }) =>
@@ -45,15 +46,11 @@ const TodoForm = ({ onFormSubmit }: TodoFormProps) => {
         // basic form validation
         if (todo.text === "") return;
 
-        onFormSubmit(todo);
+        onFormSubmit({ ...todo, completed: false });
 
         // reset the fields again
         setTodo({ ...TODO_DEFAULT_VALUE, id: uuidv4() });
     };
-
-    // submit the form on text box blur event
-    const textboxBlurHandler: FocusEventHandler<HTMLInputElement> = ev =>
-        ev.target.form?.requestSubmit();
 
     return (
         <form action="#" onSubmit={formSubmitHandler}>
@@ -65,7 +62,6 @@ const TodoForm = ({ onFormSubmit }: TodoFormProps) => {
                 <Textbox
                     text={todo.text}
                     onChange={formInputChangeHandler("text")}
-                    onBlur={textboxBlurHandler}
                 />
             </Card>
         </form>
