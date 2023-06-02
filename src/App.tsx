@@ -6,6 +6,9 @@ import { useState } from "react";
 import TODOS from "./data";
 import TodoListFilters from "./components/Todo/TodoListFilters";
 
+import bgDesktopLight from "./assets/backgrounds/bg-desktop-light.jpg";
+import bgMobileLight from "./assets/backgrounds/bg-mobile-light.jpg";
+
 const App = () => {
     const [todos, setTodos] = useState<Todo[]>(TODOS);
 
@@ -32,12 +35,9 @@ const App = () => {
     return (
         <>
             <picture className="absolute left-0 right-0 top-0 -z-10 w-full">
-                <source
-                    media="(min-width:1024px)"
-                    srcSet="/backgrounds/bg-desktop-light.jpg"
-                />
+                <source media="(min-width:1024px)" srcSet={bgDesktopLight} />
                 <img
-                    src="/backgrounds/bg-mobile-light.jpg"
+                    src={bgMobileLight}
                     alt="background image"
                     className="w-full object-cover"
                 />
