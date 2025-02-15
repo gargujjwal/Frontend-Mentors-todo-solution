@@ -3,7 +3,7 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
-    "homepage": "https://ujjwalgarg100204.github.io/Frontend-Mentors-todo-solution/",
+    "homepage": "https://gargujjwal.github.io/Frontend-Mentors-todo-solution/",
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
